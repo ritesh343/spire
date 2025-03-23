@@ -1,0 +1,373 @@
+
+
+.custom-background{
+  // background: linear-gradient(180deg, #F1F5FF 0%, #FED9EA 25%, #FFF1D9 50%, #FEDEFD 75%, #F1F5FF 100%);
+  background: url("/assets/images/bg.jpg") lightgray 50% / cover no-repeat;
+
+  .hero-section {
+    text-align: center;
+    padding: 20px;
+  }
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    padding-left: 3rem;
+    // align-items: center;
+    // justify-content: center;
+    // text-align: center;
+    // padding: 20px;
+    .header-title{
+      font-family: 'Playfair Display';
+      font-size: 50px;
+      font-style: italic;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 0.1px;
+      text-align: left;
+      width: 90%;
+    }
+    p {
+      font-family: Nunito;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: 0.1px;
+      color: var(--ion-custom-color1);
+    }
+  }
+  .learn-btn{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      width: 220px;
+    
+  }
+  
+  .image-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .image-content ion-img {
+    display: flex;
+    width: 492.385px;
+    height: 392px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    aspect-ratio: 492.38/392.00;
+  }
+  
+}
+
+.pills-section{
+  .pills-row{
+    display: flex;
+    justify-content: center;
+  }
+  .header{
+    text-align: center;
+    font-family: "Playfair Display";
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.1px;
+  }
+  .help-card-section{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width:1080px !important;
+    .pills{
+      // display: flex;
+      width: 333px;
+      max-width: 400px;
+      // min-width: 200px;
+      padding: 12px 24px;
+      // justify-content: space-between;
+      // align-items: center;
+      border-radius: 32px;
+      border: none;
+      // --background: #FFF;
+      .pill-body{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      
+        padding: 0;
+        ion-item{
+          display: flex;
+          width: 90%;
+          font-family: Nunito;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 500;
+          --background:transparent;
+        }
+        .arrow{
+          transition: transform 0.3s ease-in-out;
+          color: #000;
+          font-size: 20px;
+        }
+      }
+
+      &:hover{
+        .arrow{
+            transform: translateX(8px);
+            
+        }
+      }
+      &:nth-child(1){
+        background: linear-gradient(90deg, #FDA085 0%, #F6D365 100.1%);
+      }
+      &:nth-child(2){
+        background: linear-gradient(90deg, #A1C4FD 0.1%, #C2E9FB 99.9%);
+      }
+      &:nth-child(3){
+        background: linear-gradient(90deg, #FBC2EB -0.1%, #A6C1EE 100%);
+      }
+      &:nth-child(4){
+        background: linear-gradient(270deg, #FAD0C4 0%, #FFD1FF 100.84%);
+      }
+      &:nth-child(5){
+        background: linear-gradient(90deg, #8FD3F4 0%, #84FAB0 100.1%);
+      }
+    }
+  }
+
+ 
+}
+
+.main-container{
+  border-radius: 220px;
+  background: linear-gradient(180deg, #F1F5FF 0%, #FED9EA 25%, #FFF1D9 50%, #FEDEFD 75%, #F1F5FF 100%);
+  padding: 50px inherit;
+  text-align: center;
+  padding-bottom: 5.8rem;
+  .header{
+    text-align: center;
+    font-family: "Playfair Display";
+    font-size: 48px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.1px;
+  }
+  .location{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .custom-slider{
+    swiper-slide {
+      display: flex;
+      justify-content: center;
+    }
+    .slider-card {
+      width: 366px;
+      display: flex;
+      width: 365.667px;
+      padding: 48px 24px;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+      border-radius: 64px;
+      box-shadow: 0px 45px 13px 0px rgba(0, 0, 0, 0.00), 0px 29px 12px 0px rgba(0, 0, 0, 0.00), 0px 16px 10px 0px rgba(0, 0, 0, 0.01), 0px 7px 7px 0px rgba(0, 0, 0, 0.02), 0px 2px 4px 0px rgba(0, 0, 0, 0.02);
+      ion-card-title {
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-family: "Playfair Display";
+        font-size: 24px;
+        font-style: italic;
+        font-weight: 700;
+        line-height: normal;
+      }
+      p{
+        overflow: hidden;
+        color: #71717A;
+        text-align: center;
+        text-overflow: ellipsis;
+        font-family: Nunito;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Limits to 2 lines */
+        -webkit-box-orient: vertical;
+        // line-height: 1.5rem; /* Adjust line height */
+        max-height: 36px;
+      }
+      
+      ion-card-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        
+        .slider-thumbnail{
+          border-radius: 32px;
+          // min-height: 250px;
+        }
+        .location-data{
+          width: 100%;
+          
+          text-align: center;
+          font-family: Nunito;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+
+          .address-box{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-family: Nunito;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            flex: 1 0 0;
+          }
+          ion-item{
+            color: var(--ion-text-blur-color);
+          }
+        }
+
+        .play-button {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 3rem;
+          color: rgba(255, 255, 255, 0.9);
+        }
+
+        .session-button {
+          border-radius: 120px;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          letter-spacing: 0.1px;
+          width: max-content;
+          margin-top: 26px;
+        }
+
+        .audio-container{
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          --background-focused:transparent;
+
+          .audio-icon{
+            width: 40px;
+            height: 40px;
+            
+          }
+          .audio-play{
+            padding-left: 0;
+            .audio-title{
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+              letter-spacing: 0.1px;
+              padding-left: 15px;
+            }
+            .time{
+              color: var(--ion-custom-color1);
+              text-align: center;
+              font-family: Nunito;
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              letter-spacing: 0.1px;
+            }
+          }
+
+          &::after{
+            --background: transparent !important;
+            box-shadow: none !important;
+          }
+
+          &:focus-within {
+            --background: transparent !important;
+            box-shadow: none !important;
+          }
+          &.ion-focused {
+            --background: transparent !important;
+            box-shadow: none !important;
+          }
+          
+        }
+        
+
+      }
+      
+    }
+  }
+  .slider-nav-container{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 40px;
+    gap: 25px;
+    align-items: center;
+    .custom-prev{
+      display: flex;
+      width: 48px;
+      height: 48px;
+      padding: 10px;
+      justify-content: center;
+      align-items: center;
+      background: #FFF;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &.disable{
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: default;
+      }
+    }
+  }
+
+  .library-container{
+
+  }
+  
+
+  
+  
+  
+  
+  
+  
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+}
+
+
+

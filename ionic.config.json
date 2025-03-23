@@ -1,0 +1,7 @@
+{
+  "name": "spire",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

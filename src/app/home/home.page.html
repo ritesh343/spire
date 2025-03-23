@@ -1,0 +1,228 @@
+<!-- <ion-content [fullscreen]="true">
+
+</ion-content> -->
+
+<ion-content >
+  <ion-grid class="ion-padding custom-background">
+    <ion-row class="hero-section ion-align-items-center">
+
+      <ion-col size="12" size-md="6" class="text-content">
+        <div class="header-title">Hello Seeker, we are here to get You Ascended.
+          <p>Explore 1:1 consultations, guided meditations, sacred chanting, journaling, affirmations, and a music library — all designed to help you stay balanced and connected.</p>
+        </div>
+        <ion-button size="large" shape="round" class="learn-btn" color="primary">Learn more</ion-button>
+        
+      </ion-col>
+      <ion-col size="12" size-md="6" class="image-content">
+        <ion-img src="assets/svg/yoga.svg" alt="Meditation Illustration"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="ion-padding pills-section ion-margin-top">
+    <ion-row class="pills-row">
+      <ion-col size="12" class="ion-text-center">
+        <ion-text class="header">Let’s Start your Personalised Journey  </ion-text>
+      </ion-col>
+      <ion-col size="12"  class="help-card-section ion-margin-top">
+          <ion-card class="pills cursor-pointer"  *ngFor="let help of helpOptions">
+            <ion-card-content class="pill-body">
+              <ion-item lines="none" >
+                <ion-img [src]="help.icon" alt="{{ help.text }}"></ion-img>
+                <ion-label class="ion-margin-start">{{ help.text }}</ion-label>
+              </ion-item>
+              <ion-icon name="chevron-forward-outline" class="arrow"></ion-icon>
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="ion-no-padding ion-margin-top main-container">
+    
+
+    <ion-row class="">
+      <ion-col size="12" class="ion-margin-top ion-margin-bottom ion-padding-bottom">
+        <ion-text class="header">Trending 1:1 Consultations</ion-text>
+      </ion-col>
+      <ion-col size="12" class="ion-margin ion-padding" >
+        <swiper-container  class="custom-slider" id="swiperConsultaion" #swiperEl
+          [slidesPerView]="3.4" [spaceBetween]="10" 
+          [watchSlidesProgress]="true"
+          autoplay="true"
+          [watchSlidesVisibility]="true"
+          [observer]="true"
+          [observeParents]="true">
+          <swiper-slide *ngFor="let consultation of consultations">
+            <ion-card class="slider-card" [style.border]="consultation.border">
+              <ion-card-header class="ion-no-padding">
+                <ion-card-title class="ion-no-padding">{{ consultation.title }}</ion-card-title>
+                <p>{{ consultation.description }}</p>
+              </ion-card-header>
+              <ion-card-content>
+                
+                <ion-item class="slider-thumbnail" [style.--background]="consultation.bgColor">
+                  <img [src]="consultation.thumbnail" alt="Thumbnail" class="thumbnail-img">
+                  <div class="play-button">
+                    <ion-icon name="play-circle"></ion-icon>
+                  </div>
+                </ion-item>
+                <ion-button expand="full" shape="round"  color="primary" 
+                  class="session-button">Book a session</ion-button>
+              </ion-card-content>
+            </ion-card>
+          </swiper-slide>
+        </swiper-container>
+      </ion-col>
+
+      <ion-col size="12">
+        <div class="slider-nav-container">
+          <div  class="custom-prev" [ngClass]="{disable:isBeginning}" (click)="prevSlide()" >
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </div >
+          <div  class="custom-prev" [ngClass]="{disable:isEnd}">
+            <ion-icon name="chevron-forward-outline"  (click)="nextSlide()"></ion-icon>
+          </div >
+
+          <ion-label>View All</ion-label>
+        </div>
+      </ion-col>
+      
+    </ion-row>
+
+
+    <ion-row class="ion-margin-top library-container">
+      <ion-col size="12">
+        <ion-text class="header">Trending Music Library  </ion-text>
+      </ion-col>
+
+      <ion-col size="12" class="ion-margin ion-padding" >
+        <swiper-container  class="custom-slider" id="music-Slider"
+          [slidesPerView]="3.4" [spaceBetween]="10" 
+          [watchSlidesProgress]="true"
+          [watchSlidesVisibility]="true"
+          [observer]="true"
+          [observeParents]="true">
+          <swiper-slide *ngFor="let consultation of musicLibraryList">
+            <ion-card class="slider-card" [style.border]="consultation.border">
+              <ion-card-header class="ion-no-padding">
+                <ion-card-title class="ion-no-padding">{{ consultation.title }}</ion-card-title>
+                <p>{{ consultation.description }}</p>
+              </ion-card-header>
+              <ion-card-content>
+                
+                <ion-item class="slider-thumbnail">
+                  <img [src]="consultation.thumbnail" alt="Thumbnail" class="thumbnail-img">
+                  <!-- <div class="play-button">
+                    <ion-icon name="play-circle"></ion-icon>
+                  </div> -->
+                </ion-item>
+                <ion-item lines="none" class="audio-container ion-margin-top">
+                  <ion-button  shape="round" color="primary" class="audio-icon">
+                    <ion-icon   name="play"></ion-icon>
+                  </ion-button>
+                  <ion-grid class="audio-play">
+                    <ion-label  class="audio-title">Rest and Relaxation</ion-label>
+                    <ion-item lines="none">
+                        <ion-label class="time">00:00</ion-label>
+                        <ion-range min="0" max="100" color="primary" ></ion-range>
+                        <ion-label class="time">04:00</ion-label>
+                    </ion-item>
+                    
+                  </ion-grid>
+                </ion-item >
+                
+                
+              </ion-card-content>
+            </ion-card>
+          </swiper-slide>
+        </swiper-container>
+      </ion-col>
+
+      <ion-col size="12">
+        <div class="slider-nav-container">
+          <div  class="custom-prev" [ngClass]="{disable:isBeginningMusic}" (click)="prevMusicSlide()">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </div >
+          <div  class="custom-prev" [ngClass]="{disable:isEndMusic}">
+            <ion-icon name="chevron-forward-outline"  (click)="nextMusicSlide()"></ion-icon>
+          </div >
+
+          <!-- <ion-label>View All</ion-label> -->
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-margin-top library-container">
+      <ion-col size="12">
+        <ion-text class="header">Upcoming Event  </ion-text><br><br>
+        <ion-text class="ion-text-center ion-margin-top" class="location">
+          <ion-icon name="location"></ion-icon>
+          <ion-tex>New York</ion-tex>
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-text>
+      </ion-col>
+
+      <ion-col size="12" class="ion-margin ion-padding" >
+        <swiper-container  class="custom-slider" id="event-Slider"
+          [slidesPerView]="3.4" [spaceBetween]="10" 
+          [watchSlidesProgress]="true"
+          [watchSlidesVisibility]="true"
+          [observer]="true"
+          [observeParents]="true" >
+          <swiper-slide *ngFor="let item of eventLibraryList; let i = index">
+            <ion-card class="slider-card" [style.border]="styleParam[i % 10].border">
+              
+              <ion-card-content>
+                
+                <ion-item class="slider-thumbnail">
+                  <img [src]="item.thumbnail" alt="Thumbnail" class="thumbnail-img">
+                </ion-item>
+                <ion-card-header class="ion-no-padding ion-margin-top">
+                  <ion-card-title class="ion-no-padding">{{ item.title }}</ion-card-title>
+                  
+                </ion-card-header>
+
+                <ion-list class="ion-margin-top location-data">
+                  <ion-item lines="none">
+                    <ion-icon name="calendar-number-outline"></ion-icon>
+                    <ion-label class="address-box ion-padding-start">{{item.time}}</ion-label>
+                  </ion-item>
+                  <ion-item lines="none">
+                    <ion-icon name="location"></ion-icon>
+                    <ion-label class="address-box ion-padding-start">{{item.location}}</ion-label>
+                  </ion-item>
+                
+                </ion-list>
+                
+                
+              </ion-card-content>
+              
+            </ion-card>
+          </swiper-slide>
+        </swiper-container>
+      </ion-col>
+
+      <ion-col size="12">
+        <div class="slider-nav-container">
+          <div  class="custom-prev" [ngClass]="{disable:isBeginningEvent}" (click)="prevEventSlide()">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </div >
+          <div  class="custom-prev" [ngClass]="{disable:isEndEvent}">
+            <ion-icon name="chevron-forward-outline"  (click)="nextEventSlide()"></ion-icon>
+          </div >
+
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="expert-conatainer">
+    
+  </ion-grid>
+
+
+</ion-content>
+
+
+
