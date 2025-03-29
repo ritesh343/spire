@@ -66,7 +66,7 @@
   --ion-color-medium-tint: #9d9fa6;
 
   /** light **/
-  --ion-color-light: #f4f5f8;
+  --ion-color-light: #fff;
   --ion-color-light-rgb: 244, 245, 248;
   --ion-color-light-contrast: #27272A;
   --ion-color-light-contrast-rgb: 0, 0, 0;
@@ -76,9 +76,11 @@
     /** background **/
   --ion-background-color: #ffffff;
   --ion-background-color-rgb: 255, 255, 255;
-
+//color variable
   --ion-text-color:#27272A;
   --ion-custom-color1:#848496;
   --ion-custom-color2:#8786FD;
   --ion-text-blur-color:#71717A;
+  --font-family-display:"Playfair Display";
+  --font-family-nunito:Nunito;
 }

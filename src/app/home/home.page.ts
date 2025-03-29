@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { IonicSlides } from '@ionic/angular';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -10,7 +10,7 @@ import { SwiperContainer } from 'swiper/element';
   styleUrls: ['home.page.scss'],
   standalone: false,
 })
-export class HomePage implements AfterViewInit {
+export class HomePage implements AfterViewInit,OnInit {
 Number(_t164: { title: string; location: string; time: string; thumbnail: string; bgColor: string; border: string; }) {
 throw new Error('Method not implemented.');
 }
@@ -28,6 +28,12 @@ throw new Error('Method not implemented.');
     { icon: 'assets/svg/chanting.svg', text: 'Sacred Chanting' },
     { icon: 'assets/svg/journaling.svg', text: 'My Journaling' },
     { icon: 'assets/svg/care.svg', text: 'Daily Affirmations' }
+  ];
+  consultationsCategory = [
+    { name: 'Emotional Healing', selected: true },
+    { name: 'Intuitive Guidance', selected: false },
+    { name: 'Inner Peace & Mindfulness', selected: false },
+    { name: 'Energy & Chakra Alignment', selected: false },
   ];
   consultations = [
     {
@@ -124,6 +130,14 @@ throw new Error('Method not implemented.');
     },
     
   ];
+
+  musicCategory = [
+    { name: 'Nature Sounds', selected: true },
+    { name: 'Guided Meditations', selected: false },
+    { name: 'Reflective Journals', selected: false },
+    { name: 'Affirmations & Mantras', selected: false },
+    { name: 'Healing sound', selected: false },
+  ];
  
   eventLibraryList = [
     {
@@ -132,7 +146,8 @@ throw new Error('Method not implemented.');
       time:"March 23 , 7:30 AM",
       thumbnail: "assets/images/workshop.png",
       bgColor: "",
-      border: '4px solid #FDA085'
+      border: '4px solid #FDA085',
+      price:'20$'
     },
     {
       title: "Spiritual Growth: Guided Group Meditation",
@@ -140,9 +155,10 @@ throw new Error('Method not implemented.');
       time: "March 23 , 7:30 AM",
       thumbnail: "assets/images/workshop-1.png",
       bgColor: "",
-      border: '4px solid #A1C4FD'
+      border: '4px solid #A1C4FD',
       // bgColor: "linear-gradient(to bottom, #FFDD94, #FFAB61)",
-      // border: "#FFA500"
+      // border: "#FFA500",
+      price:'20$'
     },
     {
       title: "Restorative Soundbath For Self-Healing",
@@ -150,7 +166,8 @@ throw new Error('Method not implemented.');
       time: "March 23 , 7:30 AM",
       thumbnail: "assets/images/workshop-2.png",
       bgColor: "linear-gradient(90deg, #FBC2EB -0.1%, #A6C1EE 100%)",
-      border: '4px solid #FBC2EB'
+      border: '4px solid #FBC2EB',
+      price:'20$'
     },
     {
       title: "Restorative Soundbath For Self-Healing",
@@ -158,7 +175,8 @@ throw new Error('Method not implemented.');
       time: "March 23 , 7:30 AM",
       thumbnail: "assets/images/workshop-2.png",
       bgColor: "linear-gradient(90deg, #FBC2EB -0.1%, #A6C1EE 100%)",
-      border: '4px solid #FBC2EB'
+      border: '4px solid #FBC2EB',
+      price:'20$'
     },
     {
       title: "Restorative Soundbath For Self-Healing",
@@ -166,7 +184,8 @@ throw new Error('Method not implemented.');
       time: "March 23 , 7:30 AM",
       thumbnail: "assets/images/workshop-2.png",
       bgColor: "linear-gradient(90deg, #FBC2EB -0.1%, #A6C1EE 100%)",
-      border: '4px solid #FBC2EB'
+      border: '4px solid #FBC2EB',
+      price:'20$'
     },
     {
       title: "Restorative Soundbath For Self-Healing",
@@ -174,7 +193,8 @@ throw new Error('Method not implemented.');
       time: "March 23 , 7:30 AM",
       thumbnail: "assets/images/workshop-2.png",
       bgColor: "linear-gradient(90deg, #FBC2EB -0.1%, #A6C1EE 100%)",
-      border: '4px solid #FBC2EB'
+      border: '4px solid #FBC2EB',
+      price:'20$'
     },
     
   ];
@@ -188,13 +208,56 @@ throw new Error('Method not implemented.');
     
   ];
 
+  feedbackList = [
+    {
+      message: "The 1:1 consultation completely changed my perspective on life. The spiritual guide helped me unlock a deeper level of self-awareness. Highly recommend!”",
+      thumbnail: "assets/images/sample-music.png",
+      bgColor: "",
+      border: '4px solid #FDA085',
+      user:"Sophia R."
+    },
+    {
+      message:"I love the sound library! The healing frequencies and guided meditations have been a daily source of peace and relaxation.",
+      thumbnail: "assets/images/sample-music-1.png",
+      bgColor: "",
+      border: '4px solid #A1C4FD',
+      user:"Sophia R."
+      // bgColor: "linear-gradient(to bottom, #FFDD94, #FFAB61)",
+      // border: "#FFA500"
+    },
+    {
+      message:"I was skeptical at first, but after attending a guided session, I felt truly connected to my inner self. The platform is beautifully designed and easy to navigate.",
+      thumbnail: "assets/images/sample-music-2.png",
+      bgColor: "linear-gradient(90deg, #FBC2EB -0.1%, #A6C1EE 100%)",
+      border: '4px solid #FBC2EB',
+      user:"Sophia R."
+    },
+    
+  ];
+
+  faqList = [
+    {active:false, question: 'What is Spire Wholebeing?', answer: "Spire Wholebeing Spire Wholebeing Spire Wholebeing" },
+    {active:false, question: 'What is Spire Wholebeing?', answer: "Spire Wholebeing Spire Wholebeing Spire Wholebeing" },
+    {active:false, question: 'What is Spire Wholebeing?', answer: "Spire Wholebeing Spire Wholebeing Spire Wholebeing" },
+    {active:false, question: 'What is Spire Wholebeing?', answer: "Spire Wholebeing Spire Wholebeing Spire Wholebeing" },
+  ];
+
   isBeginning: boolean = true;
   isEnd: boolean = false;
   isBeginningMusic: boolean = true;
   isEndMusic: boolean = false;
   isBeginningEvent: boolean = true;
   isEndEvent: boolean = false;
-
+  isBeginningExpert: boolean = true;
+  isEndExpert: boolean = false;
+  isBeginningFeedback: boolean = true;
+  isEndFeedback: boolean = false;
+  slidPerView = 3.4;
+  cnsultFilterPerView: number = 4;
+  musicFilterPerView: number = 5;
+  spaceFilterConsult: number = 10;
+  musicFilterSpace: number = 10;
+  feedbackPerView: number = 3;
 
   
   constructor() { 
@@ -209,8 +272,49 @@ throw new Error('Method not implemented.');
     ];
   }
 
+  ngOnInit(): void {
+    this.updateSwiperConfig();
+  }
+
+  updateSwiperConfig() {
+    const width = window.innerWidth;
+    if (width > 1400) {
+      this.slidPerView = 3.4;
+      this.cnsultFilterPerView = 4;
+      this.musicFilterPerView = 5;
+      this.feedbackPerView = 3;
+    } else if (width > 1250) {
+      this.slidPerView = 3;
+      this.cnsultFilterPerView = 4;
+      this.musicFilterPerView = 5;
+      this.feedbackPerView = 3;
+    } else if (width > 1024) {
+      this.slidPerView = 2.4;
+      this.cnsultFilterPerView = 3;
+      this.musicFilterPerView = 4.5;
+      this.feedbackPerView = 3;
+    } else if (width > 768) {
+      this.slidPerView = 1.8;
+      this.cnsultFilterPerView = 2.5;
+      this.musicFilterPerView = 3.5;
+      this.feedbackPerView = 2;
+    } else {
+      this.slidPerView = 1;
+      this.cnsultFilterPerView = 1;
+      if (width > 500) {
+        this.musicFilterPerView = 2;
+        this.cnsultFilterPerView = 2;
+        this.feedbackPerView = 1;
+      } else {
+        this.musicFilterPerView = 1;
+        this.cnsultFilterPerView = 1;
+        this.feedbackPerView = 1;
+      }
+      
+    }
+  }
+
   prevSlide() {
-    debugger
     const swiperEl: any = document.getElementById('swiperConsultaion');
     swiperEl?.swiper?.slidePrev();
     this.isBeginning = swiperEl?.swiper.isBeginning;
@@ -251,6 +355,56 @@ throw new Error('Method not implemented.');
     this.isEndEvent = swiperEl?.swiper.isEnd;
   }
 
+  prevSlideExpert() {
+    const swiperEl: any = document.getElementById('expertSlide');
+    swiperEl?.swiper?.slidePrev();
+    this.isBeginningExpert = swiperEl?.swiper.isBeginning;
+    this.isEndExpert = swiperEl?.swiper.isEnd;
+  }
+
+  nextSlideExpert() {
+    const swiperEl: any = document.getElementById('expertSlide');
+    swiperEl?.swiper?.slideNext();
+    this.isBeginningExpert = swiperEl?.swiper.isBeginning;
+    this.isEndExpert = swiperEl?.swiper.isEnd;
+  }
+
+
+  prevFeedbackSlide() {
+    const swiperEl: any = document.getElementById('feedbackSlider');
+    swiperEl?.swiper?.slidePrev();
+    this.isBeginningMusic = swiperEl?.swiper.isBeginning;
+    this.isEndMusic = swiperEl?.swiper.isEnd;
+  }
+
+  nextFeedbackSlide() {
+    const swiperEl: any = document.getElementById('feedbackSlider');
+    swiperEl?.swiper?.slideNext();
+    this.isBeginningMusic = swiperEl?.swiper.isBeginning;
+    this.isEndMusic = swiperEl?.swiper.isEnd;
+  }
+
+
+  changeConsultaionFilter(item,type) {
+   
+  
+    switch (type) {
+      case 'music':
+        this.musicCategory.forEach((data) => {
+          data.selected = false;
+        });
+        break;
+      case 'consultaion':
+        this.consultationsCategory.forEach((data) => {
+          data.selected = false;
+        });
+        break;
+      
+    }
+
+    item.selected = true;
+  }
+
   ngAfterViewInit(): void {
     
     // const buttonEl = document.getElementById('next');
@@ -275,5 +429,14 @@ throw new Error('Method not implemented.');
   //   document.getElementById('prevButton')?.addEventListener('click', () => splide.go('<'));
   // document.getElementById('nextButton')?.addEventListener('click', () => splide.go('>'));
   }
+
+  accordionGroupChange(event, item) {
+    item.active = !item.active;
+  }
+
+  @HostListener('window:resize', [])
+    onResize() {
+      this.updateSwiperConfig();
+    }
 
 }

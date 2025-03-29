@@ -6,14 +6,14 @@
   <ion-grid class="ion-padding custom-background">
     <ion-row class="hero-section ion-align-items-center">
 
-      <ion-col size="12" size-md="6" class="text-content">
+      <ion-col size="12" size-lg="6" class="text-content">
         <div class="header-title">Hello Seeker, we are here to get You Ascended.
           <p>Explore 1:1 consultations, guided meditations, sacred chanting, journaling, affirmations, and a music library — all designed to help you stay balanced and connected.</p>
         </div>
         <ion-button size="large" shape="round" class="learn-btn" color="primary">Learn more</ion-button>
         
       </ion-col>
-      <ion-col size="12" size-md="6" class="image-content">
+      <ion-col size="12" size-lg="6" class="image-content">
         <ion-img src="assets/svg/yoga.svg" alt="Meditation Illustration"></ion-img>
       </ion-col>
     </ion-row>
@@ -41,13 +41,51 @@
   <ion-grid class="ion-no-padding ion-margin-top main-container">
     
 
-    <ion-row class="">
-      <ion-col size="12" class="ion-margin-top ion-margin-bottom ion-padding-bottom">
+    <ion-row class="trending-container">
+      <ion-col size="12" class="ion-margin-top">
         <ion-text class="header">Trending 1:1 Consultations</ion-text>
       </ion-col>
-      <ion-col size="12" class="ion-margin ion-padding" >
+      
+
+      <ion-col size="12" class="ion-margin-top ion-text-center">
+        <ion-text class="header-description">
+          Our experts are here to support you on your journey towards holistic well-being. Choose from a variety of spiritual guides, coaches, and wellness practitioners for personalized sessions.
+        </ion-text>
+      </ion-col>
+
+      <ion-col size="12" class="ion-margin-top ion-text-center header-tabs">
+        <swiper-container  class="ion-margin-top" W #swiperEl
+          [slidesPerView]="cnsultFilterPerView" [spaceBetween]="spaceFilterConsult" 
+          [watchSlidesProgress]="true"
+          autoplay="true"
+          [watchSlidesVisibility]="true"
+          [observer]="true"
+          [observeParents]="true">
+          <swiper-slide *ngFor="let item of consultationsCategory" class="pills-box">
+            <ion-item lines="none" class="pill-item cursor-pointer" 
+                
+                [ngClass]="{'selected':item.selected}" (click)="changeConsultaionFilter(item,'consultaion')">
+              <ion-icon name="radio-button-on" *ngIf="item.selected"></ion-icon>
+              <ion-label>{{item.name}}</ion-label>
+            </ion-item>
+          </swiper-slide>
+        </swiper-container>
+        <!-- <ion-list class="pills-box">
+          <ion-item lines="none" class="pill-item cursor-pointer" 
+             
+             [ngClass]="{'selected':item.selected}" (click)="changeConsultaionFilter(item)">
+            <ion-icon name="radio-button-on" *ngIf="item.selected"></ion-icon>
+            <ion-label>{{item.name}}</ion-label>
+          </ion-item>
+
+        </ion-list> -->
+      </ion-col>
+
+
+
+      <ion-col size="12" class="ion-margin-top ion-padding-top" >
         <swiper-container  class="custom-slider" id="swiperConsultaion" #swiperEl
-          [slidesPerView]="3.4" [spaceBetween]="10" 
+          [slidesPerView]="slidPerView" [spaceBetween]="10" 
           [watchSlidesProgress]="true"
           autoplay="true"
           [watchSlidesVisibility]="true"
@@ -96,9 +134,29 @@
         <ion-text class="header">Trending Music Library  </ion-text>
       </ion-col>
 
-      <ion-col size="12" class="ion-margin ion-padding" >
+
+      <ion-col size="12" class="ion-margin-top ion-text-center header-tabs">
+        <swiper-container  class="ion-margin-top"  #swiperEl
+          [slidesPerView]="musicFilterPerView" [spaceBetween]="musicFilterSpace" 
+          [watchSlidesProgress]="true"
+          autoplay="true"
+          [watchSlidesVisibility]="true"
+          [observer]="true"
+          [observeParents]="true">
+          <swiper-slide *ngFor="let item of musicCategory" class="pills-box">
+            <ion-item lines="none" class="pill-item cursor-pointer" 
+                
+                [ngClass]="{'selected':item.selected}" (click)="changeConsultaionFilter(item,'music')">
+              <ion-icon name="radio-button-on" *ngIf="item.selected"></ion-icon>
+              <ion-label>{{item.name}}</ion-label>
+            </ion-item>
+          </swiper-slide>
+        </swiper-container>
+      </ion-col>
+
+      <ion-col size="12" class="ion-margin-top ion-padding-top" >
         <swiper-container  class="custom-slider" id="music-Slider"
-          [slidesPerView]="3.4" [spaceBetween]="10" 
+          [slidesPerView]="slidPerView" [spaceBetween]="10" 
           [watchSlidesProgress]="true"
           [watchSlidesVisibility]="true"
           [observer]="true"
@@ -163,9 +221,9 @@
         </ion-text>
       </ion-col>
 
-      <ion-col size="12" class="ion-margin ion-padding" >
+      <ion-col size="12" class="ion-margin-top ion-padding-top" >
         <swiper-container  class="custom-slider" id="event-Slider"
-          [slidesPerView]="3.4" [spaceBetween]="10" 
+          [slidesPerView]="slidPerView" [spaceBetween]="10" 
           [watchSlidesProgress]="true"
           [watchSlidesVisibility]="true"
           [observer]="true"
@@ -192,8 +250,12 @@
                     <ion-icon name="location"></ion-icon>
                     <ion-label class="address-box ion-padding-start">{{item.location}}</ion-label>
                   </ion-item>
-                
+                  <ion-item lines="none" class="book-section ion-margin-top">
+                    <ion-label class="price">{{item.price}}</ion-label>
+                    <ion-label slot="end">Book Now</ion-label>
+                  </ion-item>
                 </ion-list>
+                
                 
                 
               </ion-card-content>
@@ -204,7 +266,7 @@
       </ion-col>
 
       <ion-col size="12">
-        <div class="slider-nav-container">
+        <div class="slider-nav-container ion-margin-right">
           <div  class="custom-prev" [ngClass]="{disable:isBeginningEvent}" (click)="prevEventSlide()">
             <ion-icon name="chevron-back-outline"></ion-icon>
           </div >
@@ -217,12 +279,127 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid class="expert-conatainer">
+  <ion-grid class="ion-no-padding ion-margin-top people-container">
+
+    <ion-row class="ion-margin-top ion-margin-bootom">
+      <ion-col size="12" class="ion-margin-top ion-margin-bottom ion-text-center ion-padding-bottom">
+        <ion-text class="header">What Our Users Say</ion-text>
+      </ion-col>
+
+
+      <ion-col size="12" class="ion-margin-top ion-padding-top feedback-section" >
+        <swiper-container  class="custom-slider" id="feedbackSlider"
+          [slidesPerView]="feedbackPerView" [spaceBetween]="10" 
+          [watchSlidesProgress]="true"
+          [watchSlidesVisibility]="true"
+          [observer]="true"
+          [observeParents]="true">
+          <swiper-slide *ngFor="let item of feedbackList">
+            <ion-card class="slider-card feedback-card" [style.border]="item.border">
+              <ion-card-content>
+                <ion-item lines="none" class="audio-container ion-margin-top">
+                  “{{item.message}}”
+                </ion-item >
+                <ion-item lines="none" class="ion-margin-top full-width">
+                  <img slot="start" src="assets/images/user.png" alt="">
+                  <ion-label >{{item.user}}</ion-label>
+                </ion-item>
+                
+                
+              </ion-card-content>
+            </ion-card>
+          </swiper-slide>
+        </swiper-container>
+      </ion-col>
+
+      <ion-col size="12" *ngIf="false">
+        <div class="slider-nav-container">
+          <div  class="custom-prev" [ngClass]="{disable:isBeginningFeedback}" (click)="prevFeedbackSlide()">
+            <ion-icon name="chevron-back-outline"></ion-icon>
+          </div >
+          <div  class="custom-prev" [ngClass]="{disable:isEndFeedback}">
+            <ion-icon name="chevron-forward-outline"  (click)="nextFeedbackSlide()"></ion-icon>
+          </div >
+
+          <!-- <ion-label>View All</ion-label> -->
+        </div>
+      </ion-col>
+
+
+
+
+
+    </ion-row>
+
+    <ion-row class="ion-margin-top ion-margin-bootom d-flex justify-content-center">
+      <ion-col size="12" class="ion-margin-top ion-margin-bottom ion-text-center ion-padding-bottom">
+        <ion-text class="header">Frequently asked questions</ion-text>
+      </ion-col>
+
+      <ion-col size="12" sizeLg="8" sizeMd="10" class="ion-padding ion-margin-top ion-margin-bootom">
+        <ion-accordion-group class="ion-padding">
+          <ion-accordion *ngFor="let item of faqList;let i=index;"
+           [value]="i+1" >
+            <ion-item slot="header" color="light">
+              <ion-label>{{item.question}}</ion-label>
+              
+            </ion-item>
+            <div class="ion-padding" slot="content">{{item.answer}}</div>
+          </ion-accordion>
+
+        </ion-accordion-group>
+
+      </ion-col>
+    </ion-row>
     
   </ion-grid>
 
+  
 
+
+
+
+
+
+
+
+
+
+  
+  <ion-grid class="custom-footer d-flex ion-align-items-center ion-margin-top">
+    <ion-grid>
+      <ion-row>
+        <!-- Logo Section -->
+        <ion-col size-md="4" size="12" class="footer-logo">
+          <img src="assets/svg/spire-logo.svg" alt="Logo" class="logo">
+          <h2>SPIRE WHOLEBEING</h2>
+        </ion-col>
+  
+        <!-- Site Map -->
+        <ion-col size-md="4" size="12" class="footer-links ion-justify-content-center">
+          <h3>Site Map</h3>
+          <p>Sound Library</p>
+          <p>1:1 Consultation</p>
+          <p>Upcoming Events</p>
+        </ion-col>
+  
+        <!-- Subscribe Section -->
+        <ion-col size-md="4" size="12" class="footer-subscribe ion-justify-content-center">
+          <h3>Subscribe</h3>
+          <div class="subscribe-box">
+            <input type="email" placeholder="Enter your Email" class="subscribe-input">
+            <ion-icon name="paper-plane"></ion-icon>
+          </div>
+          <p class="subscribe-text">Join our newsletter to stay up to date on features and releases</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-grid>
 </ion-content>
+
+
+
+
 
 
 

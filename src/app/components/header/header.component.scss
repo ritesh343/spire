@@ -15,7 +15,7 @@
                 width: 48px;
                 height: 48px;
                 vertical-align: middle; 
-                margin-right: 8px;
+                margin-right: 12px;
             }
             ion-label{
                 font-size: 24px;
@@ -43,18 +43,21 @@
                 // align-items: center;
         
                 .header-logo{
-                    width: 35px;
-                    height: 35px;
+                    width: 33px;
+                    height: 33px;
                 }
                 ion-label{
-                    font-size: 18px;
+                    font-size: 16px;
                 }
             }
             .icon-box {
-                margin-right: 16px; 
+                margin-right: 6px; 
                 ion-icon {
-                    font-size: 28px; 
-                    margin-left: 8px; 
+                    font-size: 24px; 
+                    margin-left: 4px; 
+                    &:first-child{
+                        font-size: 21px;
+                    }
                 }
             }
         }
