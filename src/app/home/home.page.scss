@@ -518,6 +518,7 @@
   @media (max-width:1068px) {
     .header{
       font-size: 40px;
+      padding: 0 15px;
     }
   }
 
@@ -596,9 +597,10 @@
   
   
   .subscribe-box ion-icon {
-    color: #5c3cc8; /* Purple send icon */
+    color: var(--ion-custom-color3); /* Purple send icon */
     font-size: 20px;
     cursor: pointer;
+    transform: rotate(5deg);
   }
   
   .subscribe-text {

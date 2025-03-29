@@ -14,10 +14,11 @@
         
       </ion-col>
       <ion-col size="12" size-lg="6" class="image-content">
-        <ion-img src="assets/svg/yoga.svg" alt="Meditation Illustration"></ion-img>
+        <ion-img src="assets/svg/yoga.svg" loading="lazy" alt="Meditation Illustration"></ion-img>
       </ion-col>
     </ion-row>
   </ion-grid>
+  
 
   <ion-grid class="ion-padding pills-section ion-margin-top">
     <ion-row class="pills-row">
@@ -28,7 +29,7 @@
           <ion-card class="pills cursor-pointer"  *ngFor="let help of helpOptions">
             <ion-card-content class="pill-body">
               <ion-item lines="none" >
-                <ion-img [src]="help.icon" alt="{{ help.text }}"></ion-img>
+                <ion-img [src]="help.icon" loading="lazy" alt="{{ help.text }}"></ion-img>
                 <ion-label class="ion-margin-start">{{ help.text }}</ion-label>
               </ion-item>
               <ion-icon name="chevron-forward-outline" class="arrow"></ion-icon>
@@ -100,7 +101,7 @@
               <ion-card-content>
                 
                 <ion-item class="slider-thumbnail" [style.--background]="consultation.bgColor">
-                  <img [src]="consultation.thumbnail" alt="Thumbnail" class="thumbnail-img">
+                  <img [src]="consultation.thumbnail" loading="lazy" alt="Thumbnail" class="thumbnail-img">
                   <div class="play-button">
                     <ion-icon name="play-circle"></ion-icon>
                   </div>
@@ -170,7 +171,7 @@
               <ion-card-content>
                 
                 <ion-item class="slider-thumbnail">
-                  <img [src]="consultation.thumbnail" alt="Thumbnail" class="thumbnail-img">
+                  <img [src]="consultation.thumbnail" loading="lazy" alt="Thumbnail" class="thumbnail-img">
                   <!-- <div class="play-button">
                     <ion-icon name="play-circle"></ion-icon>
                   </div> -->
@@ -234,7 +235,7 @@
               <ion-card-content>
                 
                 <ion-item class="slider-thumbnail">
-                  <img [src]="item.thumbnail" alt="Thumbnail" class="thumbnail-img">
+                  <img [src]="item.thumbnail" loading="lazy" alt="Thumbnail" class="thumbnail-img">
                 </ion-item>
                 <ion-card-header class="ion-no-padding ion-margin-top">
                   <ion-card-title class="ion-no-padding">{{ item.title }}</ion-card-title>
@@ -301,7 +302,7 @@
                   “{{item.message}}”
                 </ion-item >
                 <ion-item lines="none" class="ion-margin-top full-width">
-                  <img slot="start" src="assets/images/user.png" alt="">
+                  <img slot="start" loading="lazy" src="assets/images/user.png" alt="">
                   <ion-label >{{item.user}}</ion-label>
                 </ion-item>
                 
@@ -371,7 +372,7 @@
       <ion-row>
         <!-- Logo Section -->
         <ion-col size-md="4" size="12" class="footer-logo">
-          <img src="assets/svg/spire-logo.svg" alt="Logo" class="logo">
+          <img src="assets/svg/spire-logo.svg" loading="lazy" alt="Logo" class="logo">
           <h2>SPIRE WHOLEBEING</h2>
         </ion-col>
   
